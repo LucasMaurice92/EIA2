@@ -1,3 +1,12 @@
+/* 
+E00: Miniseite
+Name: Maurice Lucas
+Matrikel: 256031
+Datum: 15.10.2017
+        
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
+Er wurde nicht kopiert und auch nicht diktiert. */
+
 window.addEventListener("load", init);
 var canvas;
 var crc2;
