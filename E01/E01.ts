@@ -1,5 +1,5 @@
 /* 
-E00: Miniseite
+E01: Skipiste
 Name: Maurice Lucas
 Matrikel: 256031
 Datum: 15.10.2017
