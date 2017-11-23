@@ -19,7 +19,7 @@ namespace E03 {
         //Linie
         crc2.beginPath();
         crc2.fillStyle = "#58ACFA";
-        crc2.fillRect(0,0,800,600);
+        crc2.fillRect(0, 0, 800, 600);
         for (let i: number = 0; i < 3; i++) {
             drawMountain(Math.random() * 200 + i * 300, Math.random() * 200 + 50);
         }
