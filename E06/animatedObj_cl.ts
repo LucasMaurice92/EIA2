@@ -1,5 +1,5 @@
-namespace E05_Class {
-    export class Snowflake {
+namespace E06_Class {
+    export class AnimatedObj {
         x: number;
         y: number;
 
@@ -15,22 +15,13 @@ namespace E05_Class {
         }
 
         move(): void {
-            this.y += 2;
-            if (this.y > 600) {
-                this.y = 0;
+           
             }
-
         }
 
         draw(): void {
-            crc2.beginPath();
-            crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
-            crc2.stroke();
-            crc2.fillStyle = "white";
-            crc2.fill();
-
+           
         }
 
     }
 }
-

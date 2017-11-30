@@ -1,5 +1,5 @@
-var E05_Class;
-(function (E05_Class) {
+var E06_Class;
+(function (E06_Class) {
     class Snowflake {
         constructor(_x, _y) {
             this.x = _x;
@@ -16,13 +16,13 @@ var E05_Class;
             }
         }
         draw() {
-            E05_Class.crc2.beginPath();
-            E05_Class.crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
-            E05_Class.crc2.stroke();
-            E05_Class.crc2.fillStyle = "white";
-            E05_Class.crc2.fill();
+            E06_Class.crc2.beginPath();
+            E06_Class.crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+            E06_Class.crc2.stroke();
+            E06_Class.crc2.fillStyle = "white";
+            E06_Class.crc2.fill();
         }
     }
-    E05_Class.Snowflake = Snowflake;
-})(E05_Class || (E05_Class = {}));
+    E06_Class.Snowflake = Snowflake;
+})(E06_Class || (E06_Class = {}));
 //# sourceMappingURL=snowflake_cl.js.map

@@ -50,7 +50,8 @@ namespace E03 {
         //Tannenbaum
         //Position oberes Dreieck
 
-        sonne(700, 60)
+        sonne(700, 60);
+        
         for (let i: number = 0; i < 4; i++) {
             tannenbaum(Math.random() * 400, Math.random() * 300 + 200);
         }

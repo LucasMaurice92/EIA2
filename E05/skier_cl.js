@@ -10,8 +10,12 @@ var E05_Class;
             this.draw();
         }
         move() {
-            this.x += Math.random() * 4 - 2; // hier experimentieren um
-            this.y += Math.random() * 4 - 2; // andere Bewegungsmuster zu finden
+            this.x += 2;
+            this.y += 2;
+            if (this.y > 600 || this.x > 800) {
+                this.y = 300;
+                this.x = -20 + 10 * Math.random();
+            }
         }
         draw() {
             E05_Class.crc2.beginPath();

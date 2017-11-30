@@ -1,4 +1,4 @@
-namespace E05_Class {
+namespace E06_Class {
     export class Cloud {
         x: number;
         y: number;
