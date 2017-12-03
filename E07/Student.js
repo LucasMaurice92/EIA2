@@ -3,16 +3,16 @@ var StudiVZ;
     var students = [];
     var stop = false;
     while (!stop) {
-        var action = prompt("Datensatz anlegen (n), abfragen (a) oder Programm beenden (s)\nn,a oder s eingeben");
+        var action = prompt("Neuen Datensatz anlegen (n), abfragen (a) oder Selbstzerstörung (s)\nn,a oder s eingeben");
         switch (action) {
             case "n":
             case "N":
-                var input = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 -> w oder 1 -> m) und Kommentar");
+                var input = prompt("Eingabe (jeweils mit Komma zu trennen) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 -> w oder 1 -> m) und einem Kommentar");
                 alert(saveData(input));
                 break;
             case "a":
             case "A":
-                var matrikel = parseInt(prompt("Eingabe Matrikelnummer"));
+                var matrikel = parseInt(prompt("Eingabe der Matrikelnummer"));
                 alert(queryData(matrikel));
                 break;
             case "s":
@@ -21,7 +21,7 @@ var StudiVZ;
         }
     }
     function saveData(_input) {
-        let dataArray = _input.split(","); //split gibt ein Array zurück
+        let dataArray = _input.split(",");
         let studentData = {
             matrikel: parseInt(dataArray[0]),
             lastname: dataArray[1],
@@ -38,16 +38,16 @@ var StudiVZ;
         else {
             gender = "männlich";
         }
-        return "Deine Daten lauten:\n" + "\nMatrikelnummer: " + studentData.matrikel + "\nName: " + studentData.firstname + studentData.lastname + "\nAlter: " + studentData.age + "\nGeschlecht: " + gender + "\nKommentar: " + studentData.comment;
+        return "Deine Daten:\n" + "\nMatrikelnummer: " + studentData.matrikel + "\nName: " + studentData.firstname + studentData.lastname + "\nAlter: " + studentData.age + "\nGeschlecht: " + gender + "\nKommentar: " + studentData.comment;
     }
     function queryData(_matrikel) {
         for (let i = 0; i < students.length; i++) {
             if (students[i].matrikel == _matrikel) {
                 let gender = students[i].gender ? "weiblich" : "männlich";
-                return "Gefundene Daten zur Matrikelnummer: " + students[i].matrikel + "\n\nName: " + students[i].firstname + students[i].lastname + "\nAlter: " + students[i].age + "\nGeschlecht: " + gender + "\nKommentar: " + students[i].comment;
+                return "Daten zur passenden Matrikelnummer: " + students[i].matrikel + "\n\nName: " + students[i].firstname + students[i].lastname + "\nAlter: " + students[i].age + "\nGeschlecht: " + gender + "\nKommentar: " + students[i].comment;
             }
             else {
-                return "Die eingegebene Matrikelnummer wurde noch nicht registriert";
+                return "Die eingegebene Matrikelnummer wurde nicht gefunden";
             }
         }
     }
