@@ -1,11 +1,9 @@
-namespace E06_Class {
-    export class Cloud {
-        x: number;
-        y: number;
+namespace E07_Class {
+    export class Cloud extends AnimatedObj {
 
         constructor(_x: number, _y: number) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y, Math.random() + 1);
+
         }
 
 
@@ -13,11 +11,11 @@ namespace E06_Class {
             this.move();
             this.draw();
         }
-
-        move(): void {
-            this.x += 2;
+         move(): void {
+            this.x += this.speed;
             if (this.x > 800) {
-                this.x = -20;
+                this.x = -50;
+
             }
         }
 

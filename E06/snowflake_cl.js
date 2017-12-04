@@ -1,28 +1,27 @@
-var E06_Class;
-(function (E06_Class) {
-    class Snowflake {
+var E07_Class;
+(function (E07_Class) {
+    class Snowflake extends E07_Class.AnimatedObj {
         constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y, Math.random() + 1);
         }
         update() {
             this.move();
             this.draw();
         }
         move() {
-            this.y += 2;
-            if (this.y > 600) {
+            this.y += this.speed;
+            if (this.y > 500) {
                 this.y = 0;
             }
         }
         draw() {
-            E06_Class.crc2.beginPath();
-            E06_Class.crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
-            E06_Class.crc2.stroke();
-            E06_Class.crc2.fillStyle = "white";
-            E06_Class.crc2.fill();
+            E07_Class.crc2.beginPath();
+            E07_Class.crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+            E07_Class.crc2.stroke();
+            E07_Class.crc2.fillStyle = "white";
+            E07_Class.crc2.fill();
         }
     }
-    E06_Class.Snowflake = Snowflake;
-})(E06_Class || (E06_Class = {}));
+    E07_Class.Snowflake = Snowflake;
+})(E07_Class || (E07_Class = {}));
 //# sourceMappingURL=snowflake_cl.js.map

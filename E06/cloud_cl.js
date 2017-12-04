@@ -1,29 +1,28 @@
-var E06_Class;
-(function (E06_Class) {
-    class Cloud {
+var E07_Class;
+(function (E07_Class) {
+    class Cloud extends E07_Class.AnimatedObj {
         constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y, Math.random() + 1);
         }
         update() {
             this.move();
             this.draw();
         }
         move() {
-            this.x += 2;
+            this.x += this.speed;
             if (this.x > 800) {
-                this.x = -20;
+                this.x = -50;
             }
         }
         draw() {
-            E06_Class.crc2.beginPath();
-            E06_Class.crc2.arc(this.x, this.y, 20, 0, 2 * Math.PI);
-            E06_Class.crc2.arc(this.x + 20, this.y, 20, 0, 2 * Math.PI);
-            E06_Class.crc2.arc(this.x + 40, this.y, 20, 0, 2 * Math.PI);
-            E06_Class.crc2.fillStyle = "white";
-            E06_Class.crc2.fill();
+            E07_Class.crc2.beginPath();
+            E07_Class.crc2.arc(this.x, this.y, 20, 0, 2 * Math.PI);
+            E07_Class.crc2.arc(this.x + 20, this.y, 20, 0, 2 * Math.PI);
+            E07_Class.crc2.arc(this.x + 40, this.y, 20, 0, 2 * Math.PI);
+            E07_Class.crc2.fillStyle = "white";
+            E07_Class.crc2.fill();
         }
     }
-    E06_Class.Cloud = Cloud;
-})(E06_Class || (E06_Class = {}));
+    E07_Class.Cloud = Cloud;
+})(E07_Class || (E07_Class = {}));
 //# sourceMappingURL=cloud_cl.js.map

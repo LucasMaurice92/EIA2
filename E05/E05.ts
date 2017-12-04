@@ -1,6 +1,6 @@
 namespace E05_Class {
     export let crc2: CanvasRenderingContext2D;
-    
+
 
     let background: Background;
     let snowflakes: Snowflake[] = [];
@@ -20,7 +20,7 @@ namespace E05_Class {
 
         //Hintergrund
         background = new Background(0, 0);
-        
+
 
         // 30 Schneeflocken
         for (let i: number = 0; i < 30; i++) {
@@ -45,18 +45,18 @@ namespace E05_Class {
             let s: Tree = new Tree(Math.random() * 400, Math.random() * 300 + 200); //Zufaellige Position
             trees[i] = s;
         }
-        
+
         //Berge
 
-        
+
 
         animate();
     }
     function animate(): void {
         crc2.clearRect(0, 0, 800, 600); // hier Hintergrund restaurieren
 
-      
-         background.update();
+
+        background.update();
 
 
         for (let i: number = 0; i < trees.length; i++) {
@@ -77,7 +77,7 @@ namespace E05_Class {
             let s: Cloud = clouds[i];
             s.update();
         }
-        
+
 
         window.setTimeout(animate, 20);
     }

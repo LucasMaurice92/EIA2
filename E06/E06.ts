@@ -1,9 +1,9 @@
-namespace E06_Class {
+namespace E07_Class {
     export let crc2: CanvasRenderingContext2D;
 
 
     let background: Background;
-    let animatedObj: AnimatedObj[]= [];
+    let animatedObj: AnimatedObj[] = [];
     let trees: Tree[] = [];
 
     window.addEventListener("load", init);
@@ -16,32 +16,25 @@ namespace E06_Class {
         //Hintergrund
         background = new Background(0, 0);
 
+        for (let i: number = 0; i < 5; i++) { //Jedes Object 5 mal
+            let s: Skier = new Skier(Math.random() * -30, Math.random() * 30 + 200);
+            animatedObj.push(s);
 
-        // 30 Schneeflocken
-        for (let i: number = 0; i < 30; i++) {
-            let s: Snowflake = new Snowflake(Math.random() * 800, Math.random() * 600); //Startposition
-            snowflakes[i] = s;
+
+            let c: Cloud = new Cloud(Math.random() * 800, Math.random() * 600);
+            animatedObj.push(c);
+
+            for (let i: number = 0; i < 20; i++) { //5*20 = 100 Schneeflocken
+                let sf: Snowflake = new Snowflake(Math.random() * 800, Math.random() * 600);
+                animatedObj.push(sf);  //sf Schneeflocken
+            }
+
+
         }
-
-        // 3 Skifahrer
         for (let i: number = 0; i < 3; i++) {
-            let s: Skier = new Skier(Math.random() * 100, Math.random() * 200 + 200); //Startposition
-            skiers[i] = s;
-        }
-
-        //4 Wolken
-        for (let i: number = 0; i < 4; i++) {
-            let s: Cloud = new Cloud(Math.random() * 800, Math.random() * 100); //Startposition
-            clouds[i] = s;
-        }
-
-        //Tannen
-        for (let i: number = 0; i < 3; i++) {
-            let s: Tree = new Tree(Math.random() * 400, Math.random() * 300 + 200); //Zufaellige Position
+            let s: Tree = new Tree(Math.random() * 400, Math.random() * 250 + 300); //Zufaellige Position
             trees[i] = s;
         }
-
-
         animate();
     }
     function animate(): void {
@@ -50,24 +43,14 @@ namespace E06_Class {
 
         background.update();
 
+        for (let i: number = 0; i < animatedObj.length; i++) {
+            let m: AnimatedObj = animatedObj[i];
+            m.update();
+        }
 
         for (let i: number = 0; i < trees.length; i++) {
             let t: Tree = trees[i];
             t.draw();
-        }
-        for (let i: number = 0; i < snowflakes.length; i++) {
-            let s: Snowflake = snowflakes[i];
-            s.update();
-        }
-
-        for (let i: number = 0; i < skiers.length; i++) {
-            let s: Skier = skiers[i];
-            s.update();
-        }
-
-        for (let i: number = 0; i < clouds.length; i++) {
-            let s: Cloud = clouds[i];
-            s.update();
         }
 
 

@@ -1,4 +1,4 @@
-namespace E06_Class {
+namespace E07_Class {
     export class Tree {
         x: number;
         y: number;

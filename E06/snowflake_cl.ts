@@ -1,11 +1,9 @@
-namespace E06_Class {
-    export class Snowflake {
-        x: number;
-        y: number;
+namespace E07_Class {
+    export class Snowflake extends AnimatedObj {
+
 
         constructor(_x: number, _y: number) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y, Math.random() + 1);
         }
 
 
@@ -15,13 +13,12 @@ namespace E06_Class {
         }
 
         move(): void {
-            this.y += 2;
-            if (this.y > 600) {
+            this.y += this.speed;
+            if (this.y > 500) {
+
                 this.y = 0;
             }
-
         }
-
         draw(): void {
             crc2.beginPath();
             crc2.arc(this.x, this.y, 2, 0, 2 * Math.PI);
