@@ -1,6 +1,5 @@
 namespace E07 {
     interface StudentData {
-        //Datenstruktur
         matrikel: number;
         lastname: string;
         firstname: string;
