@@ -1,5 +1,5 @@
-var StudiVZ;
-(function (StudiVZ) {
+var E07;
+(function (E07) {
     var students = [];
     var stop = false;
     while (!stop) {
@@ -51,5 +51,5 @@ var StudiVZ;
             }
         }
     }
-})(StudiVZ || (StudiVZ = {}));
+})(E07 || (E07 = {}));
 //# sourceMappingURL=E07.js.map

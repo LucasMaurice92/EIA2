@@ -1,4 +1,4 @@
-namespace StudiVZ {
+namespace E07 {
     interface StudentData {
         //Datenstruktur
         matrikel: number;
