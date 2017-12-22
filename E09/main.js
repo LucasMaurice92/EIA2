@@ -10,7 +10,7 @@ nicht kopiert und auch nicht diktiert.
 var Blackmail;
 (function (Blackmail) {
     window.addEventListener("load", init); // Prüft ob das DOM geladen ist.
-    let buchstaben = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"; //  
+    let buchstaben = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
     let div;
     let letterArray = buchstaben.split(","); //Spaltet String nach dem Komma und Speichert Buchstaben im Array
     let safeSelection; // Speichert den ausgewählten Buchstaben.
@@ -20,7 +20,7 @@ var Blackmail;
         }
         drawMail();
     }
-    document.addEventListener("keydown", keyPress); //Prüft ob eine Kezboardtaste gedrück wird
+    document.addEventListener("keydown", keyPress); //Prüft ob eine Keyboardtaste gedrück wird
     function keyPress(_event) {
         console.log(_event.key);
         let div = document.getElementById("" + _event.key); // ID wurde in draw Funktion definiert.

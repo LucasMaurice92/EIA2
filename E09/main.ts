@@ -10,7 +10,7 @@ nicht kopiert und auch nicht diktiert.
 
 namespace Blackmail {
     window.addEventListener("load", init); // Prüft ob das DOM geladen ist.
-    let buchstaben: string = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"; //  
+    let buchstaben: string = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"; 
     let div: HTMLDivElement;
     let letterArray: string[] = buchstaben.split(","); //Spaltet String nach dem Komma und Speichert Buchstaben im Array
     let safeSelection: HTMLDivElement; // Speichert den ausgewählten Buchstaben.
@@ -22,7 +22,7 @@ namespace Blackmail {
 
     }
 
-    document.addEventListener("keydown", keyPress); //Prüft ob eine Kezboardtaste gedrück wird
+    document.addEventListener("keydown", keyPress); //Prüft ob eine Keyboardtaste gedrück wird
     function keyPress(_event: KeyboardEvent): void {
         console.log(_event.key);
         let div: HTMLDivElement = <HTMLDivElement>document.getElementById("" + _event.key); // ID wurde in draw Funktion definiert.
