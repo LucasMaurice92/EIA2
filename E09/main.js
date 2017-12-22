@@ -7,8 +7,8 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 */
-var L09_DOM;
-(function (L09_DOM) {
+var Blackmail;
+(function (Blackmail) {
     window.addEventListener("load", init); // Prüft ob das DOM geladen ist.
     let buchstaben = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"; //  
     let div;
@@ -86,5 +86,5 @@ var L09_DOM;
             document.body.removeChild(div); // Entfernt das ausgewählte div Element/Buchstaben
         }
     }
-})(L09_DOM || (L09_DOM = {}));
+})(Blackmail || (Blackmail = {}));
 //# sourceMappingURL=main.js.map
