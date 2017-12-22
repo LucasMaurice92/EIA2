@@ -8,17 +8,20 @@ namespace E08 {
         console.log(numberOfBoxes);
 
 
-        if (numberOfBoxes >= 10 && numberOfBoxes <= 100) {
+        if (numberOfBoxes >= 10 && numberOfBoxes <= 100) { 
             for (let i: number = 0; i < numberOfBoxes; i++) {
-                drawBoxes(Math.random() * 100, Math.random() * 100, 30, 30, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+                drawBoxes(Math.random() * window.innerWidth, Math.random() * window.innerWidth, 30, 30, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             }
         }
+         else {
+            window.alert("Bitte gib eine korrekte Zahl ein."); }
     }
+    
     function drawBoxes(_x: number, _y: number, _height: number, _width: number, _color: string): void {
         let divBox: HTMLDivElement = document.createElement("div");
 
-        divBox.style.marginLeft = _x + "px";
-        divBox.style.marginTop = _y + "px";
+        divBox.style.left = _x + "px";
+        divBox.style.top = _y + "px";
         divBox.style.width = _width + "px";
         divBox.style.height = _height + "px";
         divBox.style.background = _color;
