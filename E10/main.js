@@ -209,14 +209,14 @@ var E10;
         if (parseFloat(baumArt[1]) > 0 && parseFloat(halter[1]) > 0) {
             gesamtpreis *= rabatt;
         }
-        korb.innerHTML += " Gesamtpreis : " + gesamtpreis + "€";
+        korb.innerHTML += " Gesamtpreis : " + Math.round(gesamtpreis * 100) / 100 + "€";
     }
     function handleMouseDown(_event) {
         let feedback = document.createElement("div");
         if (name.checkValidity() == false || strasse.checkValidity() == false || hNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
             feedback.innerText = "Info zu deiner Bestellung: Du scheinst Deine Daten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.";
             feedback.style.color = "red";
-            -document.body.appendChild(feedback);
+            document.body.appendChild(feedback);
         }
         else {
             feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";
