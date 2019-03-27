@@ -7,9 +7,9 @@ Datum: 15.10.2017
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert. */
 
-var name = prompt("Mein Name ist...");
+let name: string = prompt("Mein Name ist...");
 function init() {
-    var node = document.getElementById("servus");
+    let node: HTMLElement = document.getElementById("servus");
     if (name.length < 1) {
         node.innerHTML = "Schade drum :(";
     }
