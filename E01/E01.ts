@@ -6,6 +6,7 @@ Datum: 15.10.2017
         
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert. */
+namespace E01 {
 
 window.addEventListener("load",init);
 var canvas: HTMLCanvasElement;
@@ -94,7 +95,7 @@ crc2.arc(x,y,20,0,2 * Math.PI);
 crc2.fillStyle= "grey";
 crc2.fill();
 }
-
+}
 
  
 

@@ -81,7 +81,7 @@ var Blackmail;
         document.body.appendChild(div); // Hängt die DIV an die HTML an
     }
     function removeLetter(_event) {
-        if (_event.altKey) {
+        if (_event.altKey) { // Überprüng ob alt-Taste gedrückt ist
             let div = _event.target;
             document.body.removeChild(div); // Entfernt das ausgewählte div Element/Buchstaben
         }

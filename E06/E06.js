@@ -9,12 +9,12 @@ var E07_Class;
         E07_Class.crc2 = canvas.getContext("2d");
         //Hintergrund
         background = new E07_Class.Background(0, 0);
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 5; i++) { //Jedes Object 5 mal
             let s = new E07_Class.Skier(Math.random() * -30, Math.random() * 30 + 200);
             animatedObj.push(s);
             let c = new E07_Class.Cloud(Math.random() * 800, Math.random() * 600);
             animatedObj.push(c);
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 20; i++) { //5*20 = 100 Schneeflocken
                 let sf = new E07_Class.Snowflake(Math.random() * 800, Math.random() * 600);
                 animatedObj.push(sf); //sf Schneeflocken
             }

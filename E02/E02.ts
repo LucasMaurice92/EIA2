@@ -1,3 +1,4 @@
+namespace E02 {
 window.addEventListener("load",init);
 var canvas: HTMLCanvasElement;
 var crc2: CanvasRenderingContext2D;
@@ -127,6 +128,7 @@ crc2.arc(x,y,2,0,2 * Math.PI);
 crc2.stroke();
 crc2.fillStyle= "white";
 crc2.fill();
+}
 }
 
 
