@@ -7,7 +7,7 @@ Datum: 15.10.2017
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert. */
 
-namespace E00{
+namespace E00 {
 let name: string = prompt("Mein Name ist...");
 function init() {
     let node: HTMLElement = document.getElementById("servus");
