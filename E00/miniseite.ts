@@ -13,10 +13,12 @@ function init() {
     let node: HTMLElement = document.getElementById("servus");
     if (name.length < 1) {
         node.innerHTML = "Schade drum :(";
+        console.log("Schade drum :(");
     }
     
     if (name.length >= 1) {
         node.innerHTML = "Herzlich willkommen liebe/-r " + name + " auf meiner Miniseite.";
+        console.log("Herzlich willkommen liebe/-r " + name + " auf meiner Miniseite.");
     }
     console.log(node);
 }
