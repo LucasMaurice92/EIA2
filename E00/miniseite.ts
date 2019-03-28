@@ -20,7 +20,6 @@ function init() {
         node.innerHTML = "Herzlich willkommen liebe/-r " + name + " auf meiner Miniseite.";
         console.log("Herzlich willkommen liebe/-r " + name + " auf meiner Miniseite.");
     }
-    console.log(node);
 }
 window.addEventListener("load", init);
 }
