@@ -9,7 +9,7 @@ Er wurde nicht kopiert und auch nicht diktiert. */
 
 namespace E00 {
 let name: string = prompt("Mein Name ist...");
-function init() {
+function init(void) {
     let node: HTMLElement = document.getElementById("servus");
     if (name.length < 1) {
         node.innerHTML = "Schade drum :(";
