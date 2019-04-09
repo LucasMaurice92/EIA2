@@ -9,18 +9,6 @@ Er wurde nicht kopiert und auch nicht diktiert. */
 
 namespace E02MauMau {
 
-
-
-
-
-
-
-
-
-
-
-
-    
     interface Card {
         value: string;
         symbol: string;
