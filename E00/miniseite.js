@@ -19,7 +19,6 @@ var E00;
             node.innerHTML = "Herzlich willkommen liebe/-r " + name + " auf meiner Miniseite.";
             console.log("Herzlich willkommen liebe/-r " + name + " auf meiner Miniseite.");
         }
-        console.log(node);
     }
     window.addEventListener("load", init);
 })(E00 || (E00 = {}));

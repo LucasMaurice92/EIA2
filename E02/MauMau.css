@@ -1,0 +1,44 @@
+canvas {
+    width: 100%;
+    display: inline;
+}
+h1{
+    height: 5%;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+
+#drawStack{
+    float: left;
+    width: 50%;
+    height: 45%;
+    background-color: blue;
+
+}
+
+#playStack{
+    float: right;
+    width: 50%;
+    height: 45%;
+    background-color: blueviolet;
+}
+
+#handcards{
+    float: right;
+    width: 100%;
+    height: 45%;
+    background-color: green;
+
+}
+
+#handcards > div{
+    width: 16%;
+    float: left;
+    margin: auto;
+    float: auto;
+}
+
