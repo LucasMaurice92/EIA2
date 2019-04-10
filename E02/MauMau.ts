@@ -8,10 +8,10 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert. */
 
 namespace E02MauMau {
-
+    window.addEventListener("load", handCard);
     interface Card {
         value: string;
-        symbol: string;
+        symbol: string;  
     }
 
     let cardStack: Card[] = [
@@ -28,15 +28,15 @@ namespace E02MauMau {
 
     let handCards: Card[] = [];
 
-    document.addEventListener("DomContentLoaded", function handCard(): void {
+   function handCard(): void {
         let input: number = parseInt(prompt("How many cards do you want to draw?"));
 
         distributeCards(input);
 
         displayCards();
-
-    });
-
+        console.log("kkkkk");   
+    }
+    
     function distributeCards(_input: number): void {
         for (let i: number = 0; i < _input; i++) {
             let cardIndex: number = Math.floor(Math.random() * cardStack.length);
