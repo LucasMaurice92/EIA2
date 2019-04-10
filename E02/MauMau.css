@@ -10,35 +10,60 @@ h1{
 p {
     text-align: center;
 }
-
+main{
+    margin-left:0%; 
+}
 
 #drawStack{
-    float: left;
-    width: 50%;
+    float:left;
+    margin-left:-2%;
+    width: 52%;
     height: 45%;
-    background-color: blue;
+    background-image : url("poker.jpg");
+    text-align: center;
+    color:white;
+    font-size:  2em;
 
 }
 
 #playStack{
-    float: right;
+  float:left;
+  margin-left:0%;
     width: 50%;
     height: 45%;
-    background-color: blueviolet;
+    background-image : url("poker.jpg");
+    text-align: center;
+    color:white;
+    font-size: 2em;
+
 }
 
 #handcards{
     float: right;
     width: 100%;
-    height: 45%;
-    background-color: green;
+    height: auto;
+    padding:10px;
+    background-image : url("poker.jpg");
 
 }
 
 #handcards > div{
-    width: 16%;
+    width: 10%;
+    height:200px;
+    padding:20px;
+    border:1px solid black;
+    margin-left:1%;
+    margin-top:5px;
+    background-color: white;
+    box-shadow: 2px 5px 5px #555;
     float: left;
-    margin: auto;
+    text-align: center;
     float: auto;
-}
 
+}
+#handcards > div:hover{
+    background-color: white;
+    box-shadow: 5px 5px 5px #000;
+    
+
+}
