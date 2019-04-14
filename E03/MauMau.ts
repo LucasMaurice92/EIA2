@@ -31,7 +31,7 @@ namespace E03MauMau {
 
     function handCard(): void {
         document.getElementById("drawstack").addEventListener("click", drawCard);
-        document.addEventListener("keydown", doStuff);
+        document.addEventListener("keydown", spaceBar);
         document.getElementById("sort").addEventListener("click", sortCards);
 
         let input: number = parseInt(prompt("How many cards do you want to draw?"));
@@ -68,7 +68,7 @@ namespace E03MauMau {
         }
     }
 
-    function doStuff(_event : KeyboardEvent):void{
+    function spaceBar(_event: KeyboardEvent): void {
         if (_event.keyCode == 32 && cardStack.length > 0) {
             drawCard();
         }

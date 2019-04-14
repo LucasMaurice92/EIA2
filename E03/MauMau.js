@@ -23,7 +23,7 @@ var E03MauMau;
     var playCards = [];
     function handCard() {
         document.getElementById("drawstack").addEventListener("click", drawCard);
-        document.addEventListener("keydown", doStuff);
+        document.addEventListener("keydown", spaceBar);
         document.getElementById("sort").addEventListener("click", sortCards);
         var input = parseInt(prompt("How many cards do you want to draw?"));
         distributeCards(input);
@@ -51,7 +51,7 @@ var E03MauMau;
             document.getElementById("handcards").appendChild(cardDrawn);
         }
     }
-    function doStuff(_event) {
+    function spaceBar(_event) {
         if (_event.keyCode == 32 && cardStack.length > 0) {
             drawCard();
         }
