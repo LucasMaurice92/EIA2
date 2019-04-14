@@ -14,7 +14,7 @@ main{
     margin-left:0%; 
 }
 
-#drawStack{
+#drawstack{
     float:left;
     margin-left:-2%;
     width: 52%;
@@ -26,7 +26,7 @@ main{
 
 }
 
-#playStack{
+#playstack{
   float:left;
   margin-left:0%;
     width: 50%;
@@ -44,11 +44,13 @@ main{
     height: auto;
     padding:10px;
     background-image : url("poker.jpg");
-
+    font-size: 2em;
 }
 
-#handcards > div{
-    width: 10%;
+
+
+#handcards >div{
+    width: 130px;
     height:200px;
     padding:20px;
     border:1px solid black;
@@ -59,11 +61,54 @@ main{
     float: left;
     text-align: center;
     float: auto;
+    color:black;
+    font-size: 1em;
 
 }
-#handcards > div:hover{
+#handcards >div:hover{
     background-color: white;
     box-shadow: 5px 5px 5px #000;
-    
+}
+#playstack >div{
+    width: 130px;
+    height:200px;
+    padding:20px;
+    border:1px solid black;
+    margin-left:1%;
+    margin-top:5px;
+    background-color: white;
+    box-shadow: 2px 5px 5px #555;
+    float: left;
+    text-align: center;
+    float: auto;
+    color:black;
+    font-size: 1em;
+    position:absolute;
 
+}
+#playstack >div:hover{
+    background-color: white;
+    box-shadow: 5px 5px 5px #000;
+}
+
+#drawstack >div{
+    width: 130px;
+    height:200px;
+    padding:20px;
+    border:1px solid black;
+    margin-left:1%;
+    margin-top:5px;
+    background-color: white;
+    box-shadow: 2px 5px 5px #555;
+    float: left;
+    text-align: center;
+    float: auto;
+    color:black;
+    font-size: 1em;
+    position:absolute;
+
+}
+#drawstack >div:hover{
+    background-color: white;
+    box-shadow: 5px 5px 5px #000;
 }

@@ -11,7 +11,7 @@ namespace E02MauMau {
     window.addEventListener("load", handCard);
     interface Card {
         value: string;
-        symbol: string;  
+        symbol: string;
     }
 
     let cardStack: Card[] = [
@@ -28,15 +28,16 @@ namespace E02MauMau {
 
     let handCards: Card[] = [];
 
-   function handCard(): void {
+    function handCard(): void {
         let input: number = parseInt(prompt("How many cards do you want to draw?"));
 
         distributeCards(input);
 
         displayCards();
-        console.log("kkkkk");   
+        console.log("kkkkk");
+        console.log("kkkkk");
     }
-    
+
     function distributeCards(_input: number): void {
         for (let i: number = 0; i < _input; i++) {
             let cardIndex: number = Math.floor(Math.random() * cardStack.length);
@@ -54,19 +55,8 @@ namespace E02MauMau {
             cardDrawn.setAttribute("class", "cardsDrawn");
             document.getElementById("handcards").appendChild(cardDrawn);
         }
-        
+
 
 
     }
-
-
-
-
-
-
-
-
-
-
-    
 }

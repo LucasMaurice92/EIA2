@@ -8,9 +8,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert. */
 var E00;
 (function (E00) {
-    let name = prompt("Mein Name ist...");
+    var name = prompt("Mein Name ist...");
     function init() {
-        let node = document.getElementById("servus");
+        var node = document.getElementById("servus");
         if (name.length < 1) {
             node.innerHTML = "Schade drum :(";
             console.log("Schade drum :(");
@@ -22,4 +22,3 @@ var E00;
     }
     window.addEventListener("load", init);
 })(E00 || (E00 = {}));
-//# sourceMappingURL=miniseite.js.map

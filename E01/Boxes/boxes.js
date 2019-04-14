@@ -1,10 +1,10 @@
 var Boxes;
 (function (Boxes) {
-    let n = 5;
-    let c;
-    let x = 0;
-    let y = 0;
-    for (let i = 0; i < n; i++) {
+    var n = 5;
+    var c;
+    var x = 0;
+    var y = 0;
+    for (var i = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
         switch (i) {
@@ -20,16 +20,20 @@ var Boxes;
             default:
                 c = "#0000ff";
         }
-        for (let a = 50; a > 0; a -= 20) {
+        for (var a = 50; a > 0; a -= 20) {
             placeDiv(c, x, y, a, a);
             if (i == 4)
                 break;
         }
     }
     function placeDiv(_color, _x, _y, _width, _height) {
-        let div = document.createElement("div");
+        var div = document.createElement("div");
         document.body.appendChild(div);
-        let s = div.style;
+        //Diese Art der CSS Zuweisung ist nicht schön und sollte vermieden werden.
+        //Eine css Datei anzulegen ist deutlich besser aber in diesem Fall nicht optimal,
+        //da jedes Objekt einige individuelle Attribute hat.
+        //Was sich gruppieren lässt, sollte stattdessen als css Klasse angelegt werden.
+        var s = div.style;
         s.border = "thin solid black";
         s.position = "absolute";
         s.backgroundColor = _color;
@@ -39,4 +43,3 @@ var Boxes;
         s.top = _y + "px";
     }
 })(Boxes || (Boxes = {}));
-//# sourceMappingURL=boxes.js.map
