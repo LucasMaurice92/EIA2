@@ -94,6 +94,7 @@ namespace E03MauMau {
 
         displayCards();
     }
+    
     function playCard(_element: Event): void {
         let target: Element = <Element>_element.target;
         console.log(target.id);
