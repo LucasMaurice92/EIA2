@@ -179,7 +179,7 @@ var E05;
         }
         shoppingCartElement.innerHTML += "" + toppingSelected[0] + " " + toppingSelected[1] + "€ <p></p>";
         shoppingCartElement.innerHTML += "" + shippingSelected[0] + " " + shippingSelected[1] + "€ <p></p>";
-        shoppingCartElement.innerHTML += " Gesamtpreis : " + Math.round(priceTotal * 100) / 100 + "€";
+        shoppingCartElement.innerHTML += " Gesamtpreis : " + priceTotal.toFixed(2) + "€";
     }
     function validateOrder() {
         var feedback = document.createElement("div");
