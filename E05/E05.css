@@ -11,7 +11,7 @@ body {
 
 
 input:invalid {
-	background-color: black;
+	background-color: red;
 	color:white;
 }
 
@@ -46,7 +46,6 @@ button {
 	padding: 1em;
 
 }
-
 
 div{
 	margin-top:2em;

@@ -6,6 +6,7 @@ var E05;
     var flavoursSelected = [];
     var toppingSelected = ["kein Topping", "0"];
     var shippingSelected = ["Selbstabholer", "0"];
+    var priceTotal = 0;
     var name;
     var streetName;
     var houseNumber;
@@ -138,7 +139,6 @@ var E05;
     }
     function updateShoppingCart(_event) {
         var target = _event.target;
-        var priceTotal = 0;
         var countTotal = [];
         var checkedProducts = [];
         var shoppingCartElement = document.getElementById("shoppingcart");
@@ -182,18 +182,22 @@ var E05;
         shoppingCartElement.innerHTML += " Gesamtpreis : " + priceTotal.toFixed(2) + "€";
     }
     function validateOrder() {
-        var feedback = document.createElement("div");
-        if (name.checkValidity() == false || streetName.checkValidity() == false
+        //let feedback: HTMLDivElement = document.createElement("div");
+        if (priceTotal == 0)
+            alert("Bitte wählen sie ein Eis aus");
+        else if (name.checkValidity() == false || streetName.checkValidity() == false
             || houseNumber.checkValidity() == false || city.checkValidity() == false
             || areaCode.checkValidity() == false || mail.checkValidity() == false) {
-            feedback.innerText = "Info zu deiner Bestellung: Du scheinst Deine Daten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.";
-            feedback.style.color = "red";
-            document.body.appendChild(feedback);
+            //feedback.innerText = "Du scheinst deine Daten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.";
+            //feedback.style.color = "red";
+            //document.body.appendChild(feedback);
+            alert("Du scheinst deine Lieferdaten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.");
         }
         else {
-            feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";
-            feedback.style.color = "green";
-            document.body.appendChild(feedback);
+            //feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";
+            //feedback.style.color = "green";
+            //document.body.appendChild(feedback);
+            alert("Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.");
         }
     }
 })(E05 || (E05 = {}));
