@@ -1,5 +1,5 @@
 
-namespace E06 {
+namespace E07 {
 
     export interface Product {
         type: string;
