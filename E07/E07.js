@@ -26,7 +26,7 @@ var E07;
         toppingSelectionBox.id = "selecttopping";
         toppingElement.appendChild(toppingSelectionBox);
         for (var i = 0; i < E07.products.length; i++) {
-            if (E07.products[i].type == E07.products[i].name) {
+            if (E07.products[i].type == "Waffelart") {
                 var radioB = document.createElement("input");
                 radioB.type = "radio";
                 radioB.name = E07.products[i].name;
