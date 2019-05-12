@@ -1,6 +1,6 @@
-var E06;
-(function (E06) {
-    E06.products = [
+var E07;
+(function (E07) {
+    E07.products = [
         { type: "Waffelart", name: "Waffel", price: 0.10 },
         { type: "Waffelart", name: "Becher", price: 0.10 },
         { type: "Eiskugel", name: "Vanille", price: 0.70 },
@@ -19,4 +19,4 @@ var E06;
         { type: "Shipping", name: "Standart Lieferung", price: 2.00 },
         { type: "Shipping", name: "Express Lieferung", price: 5.00 }
     ];
-})(E06 || (E06 = {}));
+})(E07 || (E07 = {}));

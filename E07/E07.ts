@@ -2,6 +2,8 @@ namespace E07 {
     window.addEventListener("load", generateContent);
     window.addEventListener("change", updateShoppingCart);
 
+    let address: string = "https://eisd.herokuapp.com/";
+
     let coneSelected: string[] = ["kein Waffel", "0"];
     let flavoursSelected: string[][] = [];
     let toppingSelected: string[] = ["kein Topping", "0"];
@@ -37,7 +39,7 @@ namespace E07 {
             if (products[i].type == "Waffelart") {
                 let radioB: HTMLInputElement = document.createElement("input");
                 radioB.type = "radio";
-                radioB.name = "radioGroupCone";
+                radioB.name = products[i].name;
                 radioB.value = "radio" + i;
                 radioB.id = "radio" + i;
                 conesElement.appendChild(radioB);
@@ -52,7 +54,7 @@ namespace E07 {
             else if (products[i].type == "Eiskugel") {
                 let checkB: HTMLInputElement = document.createElement("input");
                 checkB.type = "checkbox";
-                checkB.name = "CheckboxFlavour";
+                checkB.name = products[i].name;
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 flavourElement.appendChild(checkB);
@@ -65,7 +67,7 @@ namespace E07 {
 
                 let stepper: HTMLInputElement = document.createElement("input");
                 stepper.type = "number";
-                stepper.name = "StepperFlavour" + i;
+                stepper.name = products[i].name;
                 stepper.value = "0";
                 stepper.id = "stepper" + i;
                 stepper.min = "0";
@@ -153,7 +155,7 @@ namespace E07 {
             if (products[i].type == "Shipping") {
                 var radioShipping: HTMLInputElement = document.createElement("input");
                 radioShipping.type = "radio";
-                radioShipping.name = "radioGroupShipping";
+                radioShipping.name = products[i].name;
                 radioShipping.value = "radio2" + i;
                 radioShipping.id = "radioShipping" + i;
                 shippingOptions.appendChild(radioShipping);
@@ -258,6 +260,21 @@ namespace E07 {
             alert("Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.");
         
         
+        }
+    }
+
+    function sendRequestWithCustomData(_color: string): void {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        xhr.open("GET", address + "?color=" + _color, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+
+    function handleStateChange(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
         }
     }
 }

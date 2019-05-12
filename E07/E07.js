@@ -1,7 +1,8 @@
-var E06;
-(function (E06) {
+var E07;
+(function (E07) {
     window.addEventListener("load", generateContent);
     window.addEventListener("change", updateShoppingCart);
+    var address = "https://eisd.herokuapp.com/";
     var coneSelected = ["kein Waffel", "0"];
     var flavoursSelected = [];
     var toppingSelected = ["kein Topping", "0"];
@@ -24,35 +25,35 @@ var E06;
         toppingSelectionBox.name = "SelectTopping";
         toppingSelectionBox.id = "selecttopping";
         toppingElement.appendChild(toppingSelectionBox);
-        for (var i = 0; i < E06.products.length; i++) {
-            if (E06.products[i].type == "Waffelart") {
+        for (var i = 0; i < E07.products.length; i++) {
+            if (E07.products[i].type == E07.products[i].name) {
                 var radioB = document.createElement("input");
                 radioB.type = "radio";
-                radioB.name = "radioGroupCone";
+                radioB.name = E07.products[i].name;
                 radioB.value = "radio" + i;
                 radioB.id = "radio" + i;
                 conesElement.appendChild(radioB);
                 label = document.createElement("label");
                 label.id = "label" + i;
                 label.htmlFor = radioB.id;
-                label.innerText = E06.products[i].name;
+                label.innerText = E07.products[i].name;
                 conesElement.appendChild(label);
             }
-            else if (E06.products[i].type == "Eiskugel") {
+            else if (E07.products[i].type == "Eiskugel") {
                 var checkB = document.createElement("input");
                 checkB.type = "checkbox";
-                checkB.name = "CheckboxFlavour";
+                checkB.name = E07.products[i].name;
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 flavourElement.appendChild(checkB);
                 var label2 = document.createElement("label");
                 label2.id = "label." + i;
                 label2.htmlFor = checkB.id;
-                label2.innerText = E06.products[i].name;
+                label2.innerText = E07.products[i].name;
                 flavourElement.appendChild(label2);
                 var stepper = document.createElement("input");
                 stepper.type = "number";
-                stepper.name = "StepperFlavour" + i;
+                stepper.name = E07.products[i].name;
                 stepper.value = "0";
                 stepper.id = "stepper" + i;
                 stepper.min = "0";
@@ -62,9 +63,9 @@ var E06;
                 var br = document.createElement("br");
                 flavourElement.appendChild(br);
             }
-            else if (E06.products[i].type == "Topping") {
+            else if (E07.products[i].type == "Topping") {
                 var opt = document.createElement("option");
-                opt.innerText = E06.products[i].name;
+                opt.innerText = E07.products[i].name;
                 opt.id = "option." + i;
                 toppingSelectionBox.appendChild(opt);
             }
@@ -121,18 +122,18 @@ var E06;
         shippingInformation.appendChild(additionalInfo);
         //generate shipping options
         var shippingOptions = document.getElementById("shippingoptions");
-        for (var i = 0; i < E06.products.length; i++) {
-            if (E06.products[i].type == "Shipping") {
+        for (var i = 0; i < E07.products.length; i++) {
+            if (E07.products[i].type == "Shipping") {
                 var radioShipping = document.createElement("input");
                 radioShipping.type = "radio";
-                radioShipping.name = "radioGroupShipping";
+                radioShipping.name = E07.products[i].name;
                 radioShipping.value = "radio2" + i;
                 radioShipping.id = "radioShipping" + i;
                 shippingOptions.appendChild(radioShipping);
                 var labeShipping = document.createElement("label");
                 labeShipping.id = "labelShipping" + i;
                 labeShipping.htmlFor = radioShipping.id;
-                labeShipping.innerText = E06.products[i].name;
+                labeShipping.innerText = E07.products[i].name;
                 shippingOptions.appendChild(labeShipping);
             }
         }
@@ -146,25 +147,25 @@ var E06;
         shoppingCartElement.style.height = "auto";
         shoppingCartElement.style.border = "1px solid black";
         shoppingCartElement.innerHTML = "<span>Ihr Warenkorb</span> <p></p>";
-        for (var i = 0; i < E06.products.length; i++) {
-            if (E06.products[i].type == "Eiskugel") {
+        for (var i = 0; i < E07.products.length; i++) {
+            if (E07.products[i].type == "Eiskugel") {
                 countTotal[i] = document.getElementById("stepper" + i);
                 checkedProducts[i] = document.getElementById("check" + i);
             }
             if (target.id == "radio" + i) {
-                coneSelected[0] = E06.products[i].name;
-                coneSelected[1] = "" + E06.products[i].price;
+                coneSelected[0] = E07.products[i].name;
+                coneSelected[1] = "" + E07.products[i].price;
             }
             else if (target.id == "check" + i || target.id == "stepper" + i) {
-                flavoursSelected[i] = [E06.products[i].name, "" + (E06.products[i].price * parseInt(countTotal[i].value))];
+                flavoursSelected[i] = [E07.products[i].name, "" + (E07.products[i].price * parseInt(countTotal[i].value))];
             }
-            else if (target.value == E06.products[i].name && target.id == "selecttopping") {
-                toppingSelected[0] = E06.products[i].name;
-                toppingSelected[1] = "" + E06.products[i].price;
+            else if (target.value == E07.products[i].name && target.id == "selecttopping") {
+                toppingSelected[0] = E07.products[i].name;
+                toppingSelected[1] = "" + E07.products[i].price;
             }
             else if (target.id == "radioShipping" + i) {
-                shippingSelected[0] = E06.products[i].name;
-                shippingSelected[1] = "" + E06.products[i].price;
+                shippingSelected[0] = E07.products[i].name;
+                shippingSelected[1] = "" + E07.products[i].price;
             }
         }
         priceTotal = parseFloat(coneSelected[1]) + parseFloat(toppingSelected[1]) + parseFloat(shippingSelected[1]);
@@ -200,4 +201,17 @@ var E06;
             alert("Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.");
         }
     }
-})(E06 || (E06 = {}));
+    function sendRequestWithCustomData(_color) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", address + "?color=" + _color, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+    function handleStateChange(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+        }
+    }
+})(E07 || (E07 = {}));
