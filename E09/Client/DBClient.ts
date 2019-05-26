@@ -42,17 +42,26 @@ namespace DBClient {
         }
     }
 
-    function find(_event: Event): void {
-        let matrikelFind: number = Number(document.getElementById("matrikelFinder").value);
-        console.log(matrikelFind);
-        let query: string = "command=find&matrikel=${matrikelFind}";
-        sendRequest(query, handleFindResponse);
-    }
-
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            // let responseAsJson: JSON = JSON.parse(xhr.response);
+            // console.log(responseAsJson);
+        }
+}
+    
+    function find(_event: Event): void {
+        let matrikelFind: number = Number(document.getElementById("matrikelFinder").value);
+        let query: string = `command=search&matrikel=${matrikelFind}`;
+        sendRequest(query, handleFinderResponse);
+    }
+
+    function handleFinderResponse(_event: Event): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
             output.value = xhr.response;
             let responseAsJson: JSON = JSON.parse(xhr.response);
             console.log(responseAsJson);

@@ -37,16 +37,24 @@ var DBClient;
             alert(xhr.response);
         }
     }
-    function find(_event) {
-        var matrikelFind = Number(document.getElementById("matrikelFinder").value);
-        console.log(matrikelFind);
-        var query = 'command=find&matrikel=${matrikelFind}';
-        sendRequest(query, handleFindResponse);
-    }
     function handleFindResponse(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             var output = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            // let responseAsJson: JSON = JSON.parse(xhr.response);
+            // console.log(responseAsJson);
+        }
+    }
+    function find(_event) {
+        var matrikelFind = Number(document.getElementById("matrikelFinder").value);
+        var query = "command=search&matrikel=" + matrikelFind;
+        sendRequest(query, handleFinderResponse);
+    }
+    function handleFinderResponse(_event) {
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            var output = document.getElementsByTagName("textarea")[1];
             output.value = xhr.response;
             var responseAsJson = JSON.parse(xhr.response);
             console.log(responseAsJson);
