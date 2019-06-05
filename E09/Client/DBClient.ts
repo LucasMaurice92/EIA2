@@ -1,16 +1,17 @@
 namespace DBClient {
     window.addEventListener("load", init);
-    //let serverAddress: string = "http://localhost:8100/";
-    let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
+    // let serverAddress: string = "http://localhost:8100/";
+    let serverAddress: string = "https://studentmats.herokuapp.com/";
 
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        let findButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("find");
+        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("searchMatrikel");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        findButton.addEventListener("click", find);
+        searchButton.addEventListener("click", search);
+        
     }
 
     function insert(_event: Event): void {
@@ -21,6 +22,14 @@ namespace DBClient {
         query += "&matrikel=" + inputs[2].value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
+    }
+
+    function search(_event: Event): void {
+        let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        let query: string = "command=search";
+        query += "&gesuchteMatrikel=" + inputs[3].value;
+        console.log(query);
+        sendRequest(query, handleFindResponse);
     }
 
     function refresh(_event: Event): void {
@@ -47,24 +56,6 @@ namespace DBClient {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
             output.value = xhr.response;
-            // let responseAsJson: JSON = JSON.parse(xhr.response);
-            // console.log(responseAsJson);
-        }
-}
-    
-    function find(_event: Event): void {
-        let matrikelFind: number = Number(document.getElementById("matrikelFinder").value);
-        let query: string = `command=search&matrikel=${matrikelFind}`;
-        sendRequest(query, handleFinderResponse);
-    }
-
-    function handleFinderResponse(_event: Event): void {
-        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
-            output.value = xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
         }
     }
 }
