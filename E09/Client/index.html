@@ -12,15 +12,15 @@
 		<input type="text" name="name" placeholder="name" id="name" />
 		<input type="text" name="firstname" placeholder="firstname" id="firstname" />
 		<input type="text" name="matrikel" placeholder="matrikel" id="matrikel" />
+		
 		<button type="button" id="insert">Insert to database</button>
-
 	</fieldset>
 	<fieldset id="output">
 		<legend> All student data </legend>
-		<input type="number" name="finder" placeholder="matrikel suchen" id="matrikelFinder" value=""/>
-		<button type="button" id="find">Find</button>
 		<button type="button" id="refresh">Refresh</button>
 		<textarea rows="20" cols="90"> </textarea>
+		<input type="text" name="targetMatrikel" placeholder="gesuchte matrikel" id="gesuchteMatrikel">
+		<button type="button" id="searchMatrikel">Nach Matrikelnummer suchen</button>
 	</fieldset>
 </body>
 </html>
