@@ -3,15 +3,15 @@
  * Simple server managing between client and database
  * @author: Jirka Dell'Oro-Friedl
  */
-exports.__esModule = true;
-var Http = require("http");
-var Url = require("url");
-var Database = require("./Database"); // von Mongo
+Object.defineProperty(exports, "__esModule", { value: true });
+const Http = require("http");
+const Url = require("url");
+const Database = require("./Database"); // von Mongo
 console.log("Server starting");
-var port = Number(process.env.PORT);
+let port = Number(process.env.PORT);
 if (!port)
     port = 8100;
-var server = Http.createServer();
+let server = Http.createServer();
 server.addListener("listening", handleListen);
 server.addListener("request", handleRequest);
 server.listen(port);
@@ -20,12 +20,12 @@ function handleListen() {
 }
 function handleRequest(_request, _response) {
     console.log("Request received");
-    var query = Url.parse(_request.url, true).query;
-    var command = query["command"]; // Command wird als variable für die URL abgespeichert
-    var searchedMat = query["searchedMat"];
+    let query = Url.parse(_request.url, true).query;
+    let command = query["command"]; // Command wird als variable für die URL abgespeichert
+    let searchedMat = query["searchedMat"];
     switch (command) {
         case "insert":
-            var student = {
+            let student = {
                 name: query["name"],
                 firstname: query["firstname"],
                 matrikel: parseInt(query["matrikel"])
@@ -58,3 +58,4 @@ function respond(_response, _json) {
     _response.write(_json); // Storing data wird als text übergeben
     _response.end();
 }
+//# sourceMappingURL=Server.js.map

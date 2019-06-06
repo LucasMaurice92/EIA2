@@ -2,7 +2,7 @@ var E04;
 (function (E04) {
     window.addEventListener("load", generateContent);
     window.addEventListener("change", updateShoppingCart);
-    var products = [
+    let products = [
         { type: "Waffelart", name: "Waffel", price: 0.10 },
         { type: "Waffelart", name: "Becher", price: 0.10 },
         { type: "Eiskugel", name: "Vanille", price: 0.70 },
@@ -21,28 +21,28 @@ var E04;
         { type: "Shipping", name: "Standart Lieferung", price: 2.00 },
         { type: "Shipping", name: "Express Lieferung", price: 5.00 }
     ];
-    var coneSelected = ["kein Waffel", "0"];
-    var flavoursSelected = [];
-    var toppingSelected = ["kein Topping", "0"];
-    var shippingSelected = ["Selbstabholer", "0"];
-    var name;
-    var streetName;
-    var houseNumber;
-    var city;
-    var areaCode;
-    var mail;
-    var additionalInfo;
-    var label;
+    let coneSelected = ["kein Waffel", "0"];
+    let flavoursSelected = [];
+    let toppingSelected = ["kein Topping", "0"];
+    let shippingSelected = ["Selbstabholer", "0"];
+    let name;
+    let streetName;
+    let houseNumber;
+    let city;
+    let areaCode;
+    let mail;
+    let additionalInfo;
+    let label;
     function generateContent() {
         document.getElementById("validation").addEventListener("click", validateOrder);
-        var conesElement = document.getElementById("cones");
-        var flavourElement = document.getElementById("flavours");
-        var toppingElement = document.getElementById("toppings");
-        var toppingSelectionBox = document.createElement("select");
+        let conesElement = document.getElementById("cones");
+        let flavourElement = document.getElementById("flavours");
+        let toppingElement = document.getElementById("toppings");
+        let toppingSelectionBox = document.createElement("select");
         toppingSelectionBox.name = "SelectTopping";
         toppingSelectionBox.id = "selecttopping";
         toppingElement.appendChild(toppingSelectionBox);
-        for (var i = 0; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             if (products[i].type == "Waffelart") {
                 var radioB = document.createElement("input");
                 radioB.type = "radio";
@@ -57,18 +57,18 @@ var E04;
                 conesElement.appendChild(label);
             }
             else if (products[i].type == "Eiskugel") {
-                var checkB = document.createElement("input");
+                let checkB = document.createElement("input");
                 checkB.type = "checkbox";
                 checkB.name = "CheckboxFlavour";
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 flavourElement.appendChild(checkB);
-                var label2 = document.createElement("label");
+                let label2 = document.createElement("label");
                 label2.id = "label." + i;
                 label2.htmlFor = checkB.id;
                 label2.innerText = products[i].name;
                 flavourElement.appendChild(label2);
-                var stepper = document.createElement("input");
+                let stepper = document.createElement("input");
                 stepper.type = "number";
                 stepper.name = "StepperFlavour" + i;
                 stepper.value = "0";
@@ -77,18 +77,18 @@ var E04;
                 stepper.max = "3";
                 stepper.step = "1";
                 flavourElement.appendChild(stepper);
-                var br = document.createElement("br");
+                let br = document.createElement("br");
                 flavourElement.appendChild(br);
             }
             else if (products[i].type == "Topping") {
-                var opt = document.createElement("option");
+                let opt = document.createElement("option");
                 opt.innerText = products[i].name;
                 opt.id = "option." + i;
                 toppingSelectionBox.appendChild(opt);
             }
         }
         //Create shipping input
-        var shippingInformation = document.getElementById("shippinginformation");
+        let shippingInformation = document.getElementById("shippinginformation");
         name = document.createElement("input");
         name.type = "text";
         name.name = "NameData";
@@ -138,8 +138,8 @@ var E04;
         additionalInfo.required = true;
         shippingInformation.appendChild(additionalInfo);
         //generate shipping options
-        var shippingOptions = document.getElementById("shippingoptions");
-        for (var i = 0; i < products.length; i++) {
+        let shippingOptions = document.getElementById("shippingoptions");
+        for (let i = 0; i < products.length; i++) {
             if (products[i].type == "Shipping") {
                 var radioShipping = document.createElement("input");
                 radioShipping.type = "radio";
@@ -156,16 +156,16 @@ var E04;
         }
     }
     function updateShoppingCart(_event) {
-        var target = _event.target;
-        var priceTotal = 0;
-        var countTotal = [];
-        var checkedProducts = [];
-        var shoppingCartElement = document.getElementById("shoppingcart");
+        let target = _event.target;
+        let priceTotal = 0;
+        let countTotal = [];
+        let checkedProducts = [];
+        let shoppingCartElement = document.getElementById("shoppingcart");
         shoppingCartElement.style.width = "40%";
         shoppingCartElement.style.height = "auto";
         shoppingCartElement.style.border = "1px solid black";
         shoppingCartElement.innerHTML = "<span>Ihr Warenkorb</span> <p></p>";
-        for (var i = 0; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             if (products[i].type == "Eiskugel") {
                 countTotal[i] = document.getElementById("stepper" + i);
                 checkedProducts[i] = document.getElementById("check" + i);
@@ -188,7 +188,7 @@ var E04;
         }
         priceTotal = parseFloat(coneSelected[1]) + parseFloat(toppingSelected[1]) + parseFloat(shippingSelected[1]);
         shoppingCartElement.innerHTML += "" + coneSelected[0] + " " + coneSelected[1] + "€ <p></p>";
-        for (var i = 0; i < countTotal.length; i++) {
+        for (let i = 0; i < countTotal.length; i++) {
             if (checkedProducts[i] != null) {
                 if (checkedProducts[i].checked == true) {
                     priceTotal += parseFloat(flavoursSelected[i][1]);
@@ -201,7 +201,7 @@ var E04;
         shoppingCartElement.innerHTML += " Gesamtpreis : " + Math.round(priceTotal * 100) / 100 + "€";
     }
     function validateOrder() {
-        var feedback = document.createElement("div");
+        let feedback = document.createElement("div");
         if (name.checkValidity() == false || streetName.checkValidity() == false
             || houseNumber.checkValidity() == false || city.checkValidity() == false
             || areaCode.checkValidity() == false || mail.checkValidity() == false) {
@@ -216,3 +216,4 @@ var E04;
         }
     }
 })(E04 || (E04 = {}));
+//# sourceMappingURL=E04.js.map

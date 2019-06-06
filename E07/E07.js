@@ -2,32 +2,32 @@ var E07;
 (function (E07) {
     window.addEventListener("load", generateContent);
     window.addEventListener("change", updateShoppingCart);
-    var address = "https://eisd.herokuapp.com/";
-    var coneSelected = ["kein Waffel", "0"];
-    var flavoursSelected = [];
-    var toppingSelected = ["kein Topping", "0"];
-    var shippingSelected = ["Selbstabholer", "0"];
-    var priceTotal = 0;
-    var name;
-    var streetName;
-    var houseNumber;
-    var city;
-    var areaCode;
-    var mail;
-    var additionalInfo;
-    var label;
+    let address = "https://eisd.herokuapp.com/";
+    let coneSelected = ["kein Waffel", "0"];
+    let flavoursSelected = [];
+    let toppingSelected = ["kein Topping", "0"];
+    let shippingSelected = ["Selbstabholer", "0"];
+    let priceTotal = 0;
+    let name;
+    let streetName;
+    let houseNumber;
+    let city;
+    let areaCode;
+    let mail;
+    let additionalInfo;
+    let label;
     function generateContent() {
         document.getElementById("validation").addEventListener("click", validateOrder);
-        var conesElement = document.getElementById("cones");
-        var flavourElement = document.getElementById("flavours");
-        var toppingElement = document.getElementById("toppings");
-        var toppingSelectionBox = document.createElement("select");
+        let conesElement = document.getElementById("cones");
+        let flavourElement = document.getElementById("flavours");
+        let toppingElement = document.getElementById("toppings");
+        let toppingSelectionBox = document.createElement("select");
         toppingSelectionBox.name = "SelectTopping";
         toppingSelectionBox.id = "selecttopping";
         toppingElement.appendChild(toppingSelectionBox);
-        for (var i = 0; i < E07.products.length; i++) {
+        for (let i = 0; i < E07.products.length; i++) {
             if (E07.products[i].type == "Waffelart") {
-                var radioB = document.createElement("input");
+                let radioB = document.createElement("input");
                 radioB.type = "radio";
                 radioB.name = E07.products[i].name;
                 radioB.value = "radio" + i;
@@ -40,18 +40,18 @@ var E07;
                 conesElement.appendChild(label);
             }
             else if (E07.products[i].type == "Eiskugel") {
-                var checkB = document.createElement("input");
+                let checkB = document.createElement("input");
                 checkB.type = "checkbox";
                 checkB.name = E07.products[i].name;
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 flavourElement.appendChild(checkB);
-                var label2 = document.createElement("label");
+                let label2 = document.createElement("label");
                 label2.id = "label." + i;
                 label2.htmlFor = checkB.id;
                 label2.innerText = E07.products[i].name;
                 flavourElement.appendChild(label2);
-                var stepper = document.createElement("input");
+                let stepper = document.createElement("input");
                 stepper.type = "number";
                 stepper.name = E07.products[i].name;
                 stepper.value = "0";
@@ -60,18 +60,18 @@ var E07;
                 stepper.max = "3";
                 stepper.step = "1";
                 flavourElement.appendChild(stepper);
-                var br = document.createElement("br");
+                let br = document.createElement("br");
                 flavourElement.appendChild(br);
             }
             else if (E07.products[i].type == "Topping") {
-                var opt = document.createElement("option");
+                let opt = document.createElement("option");
                 opt.innerText = E07.products[i].name;
                 opt.id = "option." + i;
                 toppingSelectionBox.appendChild(opt);
             }
         }
         //Create shipping input
-        var shippingInformation = document.getElementById("shippinginformation");
+        let shippingInformation = document.getElementById("shippinginformation");
         name = document.createElement("input");
         name.type = "text";
         name.name = "NameData";
@@ -121,8 +121,8 @@ var E07;
         additionalInfo.required = true;
         shippingInformation.appendChild(additionalInfo);
         //generate shipping options
-        var shippingOptions = document.getElementById("shippingoptions");
-        for (var i = 0; i < E07.products.length; i++) {
+        let shippingOptions = document.getElementById("shippingoptions");
+        for (let i = 0; i < E07.products.length; i++) {
             if (E07.products[i].type == "Shipping") {
                 var radioShipping = document.createElement("input");
                 radioShipping.type = "radio";
@@ -139,15 +139,15 @@ var E07;
         }
     }
     function updateShoppingCart(_event) {
-        var target = _event.target;
-        var countTotal = [];
-        var checkedProducts = [];
-        var shoppingCartElement = document.getElementById("shoppingcart");
+        let target = _event.target;
+        let countTotal = [];
+        let checkedProducts = [];
+        let shoppingCartElement = document.getElementById("shoppingcart");
         shoppingCartElement.style.width = "40%";
         shoppingCartElement.style.height = "auto";
         shoppingCartElement.style.border = "1px solid black";
         shoppingCartElement.innerHTML = "<span>Ihr Warenkorb</span> <p></p>";
-        for (var i = 0; i < E07.products.length; i++) {
+        for (let i = 0; i < E07.products.length; i++) {
             if (E07.products[i].type == "Eiskugel") {
                 countTotal[i] = document.getElementById("stepper" + i);
                 checkedProducts[i] = document.getElementById("check" + i);
@@ -170,7 +170,7 @@ var E07;
         }
         priceTotal = parseFloat(coneSelected[1]) + parseFloat(toppingSelected[1]) + parseFloat(shippingSelected[1]);
         shoppingCartElement.innerHTML += "" + coneSelected[0] + " " + coneSelected[1] + "€ <p></p>";
-        for (var i = 0; i < countTotal.length; i++) {
+        for (let i = 0; i < countTotal.length; i++) {
             if (checkedProducts[i] != null) {
                 if (checkedProducts[i].checked == true) {
                     priceTotal += parseFloat(flavoursSelected[i][1]);
@@ -202,16 +202,17 @@ var E07;
         }
     }
     function sendRequestWithCustomData(_color) {
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?color=" + _color, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
     }
     function handleStateChange(_event) {
-        var xhr = _event.target;
+        let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
             console.log("response: " + xhr.response);
         }
     }
 })(E07 || (E07 = {}));
+//# sourceMappingURL=E07.js.map

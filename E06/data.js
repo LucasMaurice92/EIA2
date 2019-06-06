@@ -20,3 +20,4 @@ var E06;
         { type: "Shipping", name: "Express Lieferung", price: 5.00 }
     ];
 })(E06 || (E06 = {}));
+//# sourceMappingURL=data.js.map

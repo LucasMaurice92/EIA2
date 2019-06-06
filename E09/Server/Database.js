@@ -1,16 +1,16 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Simple database insertion and query for MongoDB
  * @author: Jirka Dell'Oro-Friedl
  */
-var Mongo = require("mongodb");
+const Mongo = require("mongodb");
 console.log("Database starting");
 // let databaseURL: string = "mongodb://localhost:27017";
-var databaseURL = "mongodb+srv://user1:user123@eiatest-8zhhe.mongodb.net/EIAE08";
-var databaseName = "EIAE08";
-var db;
-var students;
+let databaseURL = "mongodb+srv://user1:user123@eiatest-8zhhe.mongodb.net/EIAE08";
+let databaseName = "EIAE08";
+let db;
+let students;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //    databaseURL = "mongodb://username:password@hostname:port/database";
@@ -30,9 +30,9 @@ function handleConnect(_e, _client) {
     }
 }
 function search(_searchedMat, _callback) {
-    var numbersearchedMat;
+    let numbersearchedMat;
     numbersearchedMat = parseInt(_searchedMat);
-    var cursor = students.find({ "matrikel": numbersearchedMat });
+    let cursor = students.find({ "matrikel": numbersearchedMat });
     cursor.toArray(returnSearch);
     console.log("WORKS :)");
     function returnSearch(_e, studentArray) {
@@ -58,7 +58,7 @@ function handleInsert(_e) {
 // try to fetch all documents from database, then activate callback
 function findAll(_callback) {
     // cursor points to the retreived set of documents in memory
-    var cursor = students.find(); // Zeiger auf alle gefundenen Dokumente
+    let cursor = students.find(); // Zeiger auf alle gefundenen Dokumente
     // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer); // fügt alle mit students.find() gefundenen Dokumente in ein Array hinzu // toArray erwartet callback Funktion
     // toArray-handler receives two standard parameters, an error object and the array
@@ -72,3 +72,4 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
+//# sourceMappingURL=Database.js.map

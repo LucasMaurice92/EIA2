@@ -9,7 +9,7 @@ Er wurde nicht kopiert und auch nicht diktiert. */
 var E03MauMau;
 (function (E03MauMau) {
     window.addEventListener("load", handCard);
-    var cardStack = [
+    let cardStack = [
         { value: "7", symbol: "Heart" }, { value: "7", symbol: "Tiles" }, { value: "7", symbol: "Clovers" }, { value: "7", symbol: "Pikes" },
         { value: "8", symbol: "Heart" }, { value: "8", symbol: "Tiles" }, { value: "8", symbol: "Clovers" }, { value: "8", symbol: "Pikes" },
         { value: "9", symbol: "Heart" }, { value: "9", symbol: "Tiles" }, { value: "9", symbol: "Clovers" }, { value: "9", symbol: "Pikes" },
@@ -19,20 +19,20 @@ var E03MauMau;
         { value: "King", symbol: "Heart" }, { value: "King", symbol: "Tiles" }, { value: "King", symbol: "Clovers" }, { value: "King", symbol: "Pikes" },
         { value: "Ace", symbol: "Heart" }, { value: "Ace", symbol: "Tiles" }, { value: "Ace", symbol: "Clovers" }, { value: "Ace", symbol: "Pikes" }
     ];
-    var handCards = [];
-    var playCards = [];
+    let handCards = [];
+    let playCards = [];
     function handCard() {
         document.getElementById("drawstack").addEventListener("click", drawCard);
         document.addEventListener("keydown", spaceBar);
         document.getElementById("sort").addEventListener("click", sortCards);
-        var input = parseInt(prompt("How many cards do you want to draw?"));
+        let input = parseInt(prompt("How many cards do you want to draw?"));
         distributeCards(input);
         displayCards();
     }
     function distributeCards(_input) {
-        for (var i = 0; i < _input; i++) {
-            var cardIndex = Math.floor(Math.random() * cardStack.length);
-            var cardDrawn = cardStack[cardIndex];
+        for (let i = 0; i < _input; i++) {
+            let cardIndex = Math.floor(Math.random() * cardStack.length);
+            let cardDrawn = cardStack[cardIndex];
             handCards.push(cardDrawn);
             cardStack.splice(cardIndex, 1);
         }
@@ -42,8 +42,8 @@ var E03MauMau;
         while (element.firstChild) {
             element.removeChild(element.firstChild);
         }
-        for (var i = 0; i < handCards.length; i++) {
-            var cardDrawn = document.createElement("div");
+        for (let i = 0; i < handCards.length; i++) {
+            let cardDrawn = document.createElement("div");
             cardDrawn.innerText = handCards[i].symbol + " " + handCards[i].value;
             cardDrawn.setAttribute("class", "cardsDrawn");
             cardDrawn.addEventListener("click", playCard);
@@ -66,8 +66,8 @@ var E03MauMau;
         while (element.firstChild) {
             element.removeChild(element.firstChild);
         }
-        for (var i = 0; i < playCards.length; i++) {
-            var cardDrawn = document.createElement("div");
+        for (let i = 0; i < playCards.length; i++) {
+            let cardDrawn = document.createElement("div");
             cardDrawn.innerText = playCards[i].symbol + " " + playCards[i].value;
             cardDrawn.setAttribute("class", "cardsDrawn");
             document.getElementById("playstack").appendChild(cardDrawn);
@@ -75,7 +75,7 @@ var E03MauMau;
         displayCards();
     }
     function playCard(_element) {
-        var target = _element.target;
+        let target = _element.target;
         console.log(target.id);
         playCards.push(handCards[Number(target.id)]);
         handCards.splice(Number(target.id), 1);
@@ -83,8 +83,8 @@ var E03MauMau;
         while (element.firstChild) {
             element.removeChild(element.firstChild);
         }
-        for (var i = 0; i < playCards.length; i++) {
-            var cardDrawn = document.createElement("div");
+        for (let i = 0; i < playCards.length; i++) {
+            let cardDrawn = document.createElement("div");
             cardDrawn.innerText = playCards[i].symbol + " " + playCards[i].value;
             cardDrawn.setAttribute("class", "cardsDrawn");
             document.getElementById("playstack").appendChild(cardDrawn);
@@ -92,14 +92,14 @@ var E03MauMau;
         displayCards();
     }
     function drawCard() {
-        var cardIndex = Math.floor(Math.random() * cardStack.length);
-        var cardDrawn = cardStack[cardIndex];
+        let cardIndex = Math.floor(Math.random() * cardStack.length);
+        let cardDrawn = cardStack[cardIndex];
         handCards.push(cardDrawn);
         cardStack.splice(cardIndex, 1);
         displayCards();
     }
     function sortCards() {
-        handCards.sort(function (a, b) {
+        handCards.sort((a, b) => {
             if (a.value > b.value) {
                 return 1;
             }
@@ -110,7 +110,7 @@ var E03MauMau;
                 return 0;
             }
         });
-        handCards.sort(function (a, b) {
+        handCards.sort((a, b) => {
             if (a.symbol > b.symbol) {
                 return 1;
             }
@@ -124,3 +124,4 @@ var E03MauMau;
         displayCards();
     }
 })(E03MauMau || (E03MauMau = {}));
+//# sourceMappingURL=MauMau.js.map

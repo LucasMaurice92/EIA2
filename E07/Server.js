@@ -1,13 +1,13 @@
 "use strict";
-exports.__esModule = true;
-var Http = require("http"); //Node wird importiert
+Object.defineProperty(exports, "__esModule", { value: true });
+const Http = require("http"); //Node wird importiert
 var L05_Server;
 (function (L05_Server) {
     console.log("Starting server"); //Starting Server wird in die console ausgegeben
-    var port = Number(process.env.PORT); // Die Variable port wird deklariert, sie besitzt den Typ number und wird zur number umgewandelt
+    let port = Number(process.env.PORT); // Die Variable port wird deklariert, sie besitzt den Typ number und wird zur number umgewandelt
     if (!port) //Abfrage ob port false ist
         port = 8100; //dann setze port auf 8100
-    var server = Http.createServer(); //Variable Server vom Typ Http.server wird deklariert und somit ein Server erstellt
+    let server = Http.createServer(); //Variable Server vom Typ Http.server wird deklariert und somit ein Server erstellt
     server.addListener("request", handleRequest); //Ein listener wird dem Server zugewiesen und handleRequest wird aufgerufen. Der listener hört auf eingehende daten
     server.addListener("listening", handleListen); //Ein listener wird dem Server zugewiesen und handleListen wird aufgerufen
     server.listen(port); //Der Server hört nun auf eingehende verbindungen am port
@@ -22,3 +22,4 @@ var L05_Server;
         _response.end(); //_repsonse wird an client weitergegeben und beendet
     }
 })(L05_Server || (L05_Server = {}));
+//# sourceMappingURL=Server.js.map
