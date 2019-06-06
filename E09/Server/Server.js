@@ -2,12 +2,11 @@
 /**
  * Simple server managing between client and database
  * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
  */
 exports.__esModule = true;
 var Http = require("http");
 var Url = require("url");
-var Database = require("./Database");
+var Database = require("./Database"); // von Mongo
 console.log("Server starting");
 var port = Number(process.env.PORT);
 if (!port)
@@ -22,7 +21,8 @@ function handleListen() {
 function handleRequest(_request, _response) {
     console.log("Request received");
     var query = Url.parse(_request.url, true).query;
-    var command = query["command"];
+    var command = query["command"]; // Command wird als variable für die URL abgespeichert
+    var searchedMat = query["searchedMat"];
     switch (command) {
         case "insert":
             var student = {
@@ -33,12 +33,12 @@ function handleRequest(_request, _response) {
             Database.insert(student);
             respond(_response, "storing data");
             break;
+        case "search":
+            Database.search(searchedMat, findCallback);
+            // respond(_response, "the following documents contain your configured matrikel");
+            break;
         case "refresh":
             Database.findAll(findCallback);
-            break;
-        case "find":
-            var matrikelFind = parseInt(query["matrikel"]);
-            Database.findOne(matrikelFind, findCallback);
             break;
         default:
             respond(_response, "unknown command: " + command);
@@ -46,13 +46,15 @@ function handleRequest(_request, _response) {
     }
     // findCallback is an inner function so that _response is in scope
     function findCallback(json) {
+        console.log("reached callback");
+        console.log("response: " + _response + "  json: " + json);
         respond(_response, json);
     }
 }
-function respond(_response, _text) {
+function respond(_response, _json) {
     //console.log("Preparing response: " + _text);
     _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.write(_text);
+    _response.write(_json); // Storing data wird als text übergeben
     _response.end();
 }

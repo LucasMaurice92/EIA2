@@ -1,12 +1,11 @@
 /**
  * Simple server managing between client and database
  * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
  */
 
 import * as Http from "http";
 import * as Url from "url";
-import * as Database from "./Database";
+import * as Database from "./Database"; // von Mongo
 
 console.log("Server starting");
 
@@ -19,8 +18,6 @@ server.addListener("listening", handleListen);
 server.addListener("request", handleRequest);
 server.listen(port);
 
-
-
 function handleListen(): void {
     console.log("Listening on port: " + port);
 }
@@ -29,11 +26,12 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
     console.log("Request received");
 
     let query: AssocStringString = <AssocStringString> Url.parse(_request.url, true).query;
-    let command: string = query["command"];
+    let command: string = query["command"]; // Command wird als variable für die URL abgespeichert
+    let searchedMat: string = query["searchedMat"];
 
     switch (command) {
         case "insert":
-            let student: StudentData = {
+            let student: StudentData = { // Studentobjekt wir aus url in objekt gesendet
                 name: query["name"],
                 firstname: query["firstname"],
                 matrikel: parseInt(query["matrikel"])
@@ -41,12 +39,12 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             Database.insert(student);
             respond(_response, "storing data");
             break;
+        case "search":
+            Database.search(searchedMat, findCallback);
+            // respond(_response, "the following documents contain your configured matrikel");
+            break;
         case "refresh":
             Database.findAll(findCallback);
-            break;
-        case "find":  
-            let matrikelFind: number = parseInt(query["matrikel"]);
-            Database.findOne(matrikelFind, findCallback);
             break;
         default:
             respond(_response, "unknown command: " + command);
@@ -55,14 +53,16 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
     // findCallback is an inner function so that _response is in scope
     function findCallback(json: string): void {
+        console.log("reached callback");
+        console.log("response: " + _response + "  json: " + json);
         respond(_response, json);
     }
 }
 
-function respond(_response: Http.ServerResponse, _text: string): void {
+function respond(_response: Http.ServerResponse, _json: string): void {
     //console.log("Preparing response: " + _text);
     _response.setHeader("Access-Control-Allow-Origin", "*");
     _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.write(_text);
+    _response.write(_json); // Storing data wird als text übergeben
     _response.end();
 }

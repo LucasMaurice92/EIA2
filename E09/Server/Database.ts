@@ -1,22 +1,21 @@
 /**
  * Simple database insertion and query for MongoDB
  * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
  */
-
 import * as Mongo from "mongodb";
 console.log("Database starting");
 
-let databaseURL: string = "mongodb://localhost:27017";
-let databaseName: string = "Test";
+// let databaseURL: string = "mongodb://localhost:27017";
+let databaseURL: string = "mongodb+srv://user1:user123@eiatest-8zhhe.mongodb.net/EIAE08";
+let databaseName: string = "EIAE08";
 let db: Mongo.Db;
 let students: Mongo.Collection;
 
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
-    // databaseURL = "mongodb+srv://username:password@hostname:port/database";
-    databaseURL = "mongodb+srv://testuser:testpassword@eia2-57vpd.mongodb.net/eia2";
-    databaseName = "eia2";
+    //    databaseURL = "mongodb://username:password@hostname:port/database";
+    databaseURL = "mongodb+srv://user1:user123@eiatest-8zhhe.mongodb.net/EIAE08";
+    databaseName = "EIAE08";
 }
 
 // try to connect to database, then activate callback "handleConnect" 
@@ -28,14 +27,32 @@ function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
         console.log("Unable to connect to database, error: ", _e);
     else {
         console.log("Connected to database!");
-        db = _client.db(databaseName);
-        students = db.collection("students");
+        db = _client.db(databaseName); // Bei erfolgreicher Verbingdung werden  daten ausgelesen und in der Datenbank gespeichert
+        students = db.collection("Students"); // nimmt die collection Students aus der db EIAE08
+    }
+}
+
+export function search(_searchedMat: string, _callback: Function): void {
+    let numbersearchedMat: number;
+    numbersearchedMat = parseInt(_searchedMat);
+    let cursor: Mongo.Cursor = students.find({ "matrikel": numbersearchedMat });
+    cursor.toArray(returnSearch);
+    console.log("WORKS :)");
+
+    function returnSearch(_e: Mongo.MongoError, studentArray: StudentData[]): void {
+        if (_e)
+            _callback("Error" + _e);
+        else {
+            // stringify creates a json-string, passed it back to _callback
+            console.log(JSON.stringify(studentArray));
+            _callback(JSON.stringify(studentArray));
+        }
     }
 }
 
 export function insert(_doc: StudentData): void {
     // try insertion then activate callback "handleInsert"
-    students.insertOne(_doc, handleInsert);
+    students.insertOne(_doc, handleInsert); // Führt handleInsert aus
 }
 
 // insertion-handler receives an error object as standard parameter
@@ -46,9 +63,9 @@ function handleInsert(_e: Mongo.MongoError): void {
 // try to fetch all documents from database, then activate callback
 export function findAll(_callback: Function): void {
     // cursor points to the retreived set of documents in memory
-    var cursor: Mongo.Cursor = students.find();
+    let cursor: Mongo.Cursor = students.find(); // Zeiger auf alle gefundenen Dokumente
     // try to convert to array, then activate callback "prepareAnswer"
-    cursor.toArray(prepareAnswer);
+    cursor.toArray(prepareAnswer); // fügt alle mit students.find() gefundenen Dokumente in ein Array hinzu // toArray erwartet callback Funktion
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
@@ -57,18 +74,6 @@ export function findAll(_callback: Function): void {
             _callback("Error" + _e);
         else
             // stringify creates a json-string, passed it back to _callback
-            _callback(JSON.stringify(studentArray));
-    }
-}
-
-export function findOne(_matrikelFind: number, _callback: Function): void {
-    var cursor: Mongo.Cursor = students.find({ matrikel: _matrikelFind });
-    cursor.toArray(prepareAnswer);
-    
-    function prepareAnswer(_e: Mongo.MongoError, studentArray: StudentData[]): void {
-        if (_e)
-            _callback("Error" + _e);
-        else
             _callback(JSON.stringify(studentArray));
     }
 }
