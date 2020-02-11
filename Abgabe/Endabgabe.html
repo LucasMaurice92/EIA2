@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Endabgabe</title>
+    
+    <script src="Endabgabe.js"></script>
+    <script src="Bubble.js"></script>
+    <script src="Vector.js"></script>
+    <script src="Fish.js"></script>
+    <script src="Food.js"></script>
+    <script src="Stone.js"></script>
+    <script src="Endgame.js"></script>
+    
+    <link rel="stylesheet" href="Endabgabe.css" type="text/css" media="screen" />
+</head>
+
+<body>
+    <canvas width=800 height=600></canvas>
+    <div id="info">
+        <div class="row">
+            <div class="text">Rocks left: <span id="rocksLeft"></span></div>
+            <div class="text">Breadpieces left: <span id="foodLeft"></span></div>
+            <div class="text">Score: <span id="points">0</span></div>
+        </div>
+    
+        <br>
+        <p>Click Spacebar to feed the fish</p>
+        <br>
+
+        <div class="scoreboard">
+            <table border = "1">
+                <thead>
+                    <tr>
+                        <th>Score</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody id="tableScoreboardBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
