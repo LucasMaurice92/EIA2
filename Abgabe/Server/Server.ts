@@ -16,7 +16,7 @@ export namespace Endabgabe {
         port = 5001;
     }
 
-    let databaseUrl: string = "mongodb+srv://mo:mo123@eiatest-8zhhe.mongodb.net/test?retryWrites=true&w=majority";
+    let databaseUrl: string = "mongodb+srv://mo:mo123@eiatest-8zhhe.mongodb.net/EIAE08";
 
     connectToDatabase(databaseUrl);
     startServer(port);
