@@ -30,7 +30,7 @@ export namespace Endabgabe {
     }
 
     async function connectToDatabase(_url: string): Promise<void> {
-        let options: Mongo.MongoClientOptions = {useNewUrlParser: true };
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
@@ -62,7 +62,7 @@ export namespace Endabgabe {
             // Speicher in Datenbank
             let score: Score = {
                 name: query.name as string,
-                points: parseInt(query.score as string),
+                points: parseInt(query.score as string)
             };
 
             console.log("store", score);

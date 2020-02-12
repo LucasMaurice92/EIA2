@@ -29,7 +29,7 @@ var Endabgabe;
     }
     function connectToDatabase(_url) {
         return __awaiter(this, void 0, void 0, function* () {
-            let options = { useNewUrlParser: true };
+            let options = { useNewUrlParser: true, useUnifiedTopology: true };
             let mongoClient = new Mongo.MongoClient(_url, options);
             yield mongoClient.connect();
             scoreboard = mongoClient.db("EIAE08").collection("scoreboard");
@@ -55,7 +55,7 @@ var Endabgabe;
             // Speicher in Datenbank
             let score = {
                 name: query.name,
-                points: parseInt(query.score),
+                points: parseInt(query.score)
             };
             console.log("store", score);
             storeScore(score);
