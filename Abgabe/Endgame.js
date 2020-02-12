@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var Endabgabe;
 (function (Endabgabe) {
-    let serverUrl = "https://studentmats.herokuapp.com/";
+    let serverUrl = "https://endabgabe2020.herokuapp.com/";
     function checkForEndGame() {
         return __awaiter(this, void 0, void 0, function* () {
             if (Endabgabe.rocksLeft === 0) {
