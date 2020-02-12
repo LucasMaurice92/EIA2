@@ -39,6 +39,7 @@ var Endabgabe;
     function handleRequest(_request, _response) {
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
+        _response.setHeader("Access-Control-Allow-Credentials", "true");
         if (_request.url.startsWith("/store")) {
             storeData(_request, _response);
             return;

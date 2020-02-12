@@ -42,6 +42,7 @@ export namespace Endabgabe {
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
+        _response.setHeader("Access-Control-Allow-Credentials", "true");
 
         if ((<string>_request.url).startsWith("/store")) {
             storeData(_request, _response);
