@@ -34,7 +34,7 @@ export namespace Endabgabe {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
-        scoreboard = mongoClient.db("endabgabe").collection("scoreboard");
+        scoreboard = mongoClient.db("EIAE08").collection("scoreboard");
 
         console.log("Connected to database");
     }
