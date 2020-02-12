@@ -18,7 +18,7 @@ var Endabgabe;
     if (port == undefined) {
         port = 5001;
     }
-    let databaseUrl = "mongodb+srv://mo:mo123@eiatest-8zhhe.mongodb.net/test?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb+srv://test123:test123@eiatest-8zhhe.mongodb.net/test?retryWrites=true&w=majority";
     connectToDatabase(databaseUrl);
     startServer(port);
     function startServer(_port) {
@@ -29,10 +29,10 @@ var Endabgabe;
     }
     function connectToDatabase(_url) {
         return __awaiter(this, void 0, void 0, function* () {
-            let options = { useNewUrlParser: true, useUnifiedTopology: true };
+            let options = { useNewUrlParser: true };
             let mongoClient = new Mongo.MongoClient(_url, options);
             yield mongoClient.connect();
-            scoreboard = mongoClient.db("EIAE08").collection("scoreboard");
+            scoreboard = mongoClient.db("endabgabe").collection("scoreboard");
             console.log("Connected to database");
         });
     }
