@@ -1,6 +1,6 @@
 namespace Endabgabe {
 
-    let serverUrl: string = " ";
+    let serverUrl: string = "https://studentmats.herokuapp.com/";
 
     export async function checkForEndGame(): Promise<void>  {
         if (rocksLeft === 0) {
