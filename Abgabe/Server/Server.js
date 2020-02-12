@@ -32,7 +32,7 @@ var Endabgabe;
             let options = { useNewUrlParser: true, useUnifiedTopology: true };
             let mongoClient = new Mongo.MongoClient(_url, options);
             yield mongoClient.connect();
-            scoreboard = mongoClient.db("scoreboard").collection("scoreboard");
+            scoreboard = mongoClient.db("EIAE08").collection("scoreboard");
             console.log("Connected to database");
         });
     }
