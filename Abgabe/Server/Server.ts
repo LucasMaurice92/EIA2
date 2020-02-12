@@ -16,7 +16,7 @@ export namespace Endabgabe {
         port = 5001;
     }
 
-    let databaseUrl: string = "mongodb+srv://mo:mo123@eiatest-8zhhe.mongodb.net/EIAE08";
+    let databaseUrl: string = "mongodb+srv://mo:mo123@eiatest-8zhhe.mongodb.net/test?retryWrites=true&w=majority";
 
     connectToDatabase(databaseUrl);
     startServer(port);
@@ -30,7 +30,7 @@ export namespace Endabgabe {
     }
 
     async function connectToDatabase(_url: string): Promise<void> {
-        let options: Mongo.MongoClientOptions = {useNewUrlParser: true};
+        let options: Mongo.MongoClientOptions = {useNewUrlParser: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
