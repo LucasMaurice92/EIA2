@@ -22,7 +22,7 @@ namespace Endabgabe {
             if (this.position.y < 0)
                 this.position.y += crc2.canvas.height;
 
-            if (this.position.x < 600)
+            if (this.position.x < 0)
                 this.position.x += crc2.canvas.width;
         }
 
