@@ -14,7 +14,7 @@ var Endabgabe;
             //Wenn Bubbles den oberen Canvasranderreichen erscheinen sie am unteren wieder
             if (this.position.y < 0)
                 this.position.y += Endabgabe.crc2.canvas.height;
-            if (this.position.x < 0)
+            if (this.position.x < 600)
                 this.position.x += Endabgabe.crc2.canvas.width;
         }
         draw() {
